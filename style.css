@@ -1,0 +1,144 @@
+body{
+	background-image: url("background1.png");
+	background-size: cover;
+	position: relative;
+	margin-right: 0;
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+.base-container{
+	position: relative;
+}
+
+.container{
+	height: 550px;
+	width: 700px;
+	background-color: rgb(184, 5, 255);
+	padding:20px;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 20px;
+	opacity: 0.9;
+}
+
+.question-container{
+	background-color: rgb(187, 255, 120);
+	text-align: center;
+	margin: 20px;
+	padding: 20px;
+	border-radius: 15px;
+	font-family: 'Lato', sans-serif;
+	font-size: 1.1em;
+}
+
+.btn-grid{
+	height: 250px;
+	width: 550px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	grid-gap: 30px 40px;
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+.btn{
+	outline: none;
+	border: none;
+	border-radius: 15px;
+	background-color: rgb(255, 253, 209);
+	font-family: 'Sniglet', cursive;
+	transition: 0.2s all;
+	font-size: 1.1em;
+}
+
+.btn:hover{
+	transform: scale(1.1);
+}
+
+.controls{
+	display: flex;
+	justify-content: space-between;
+	padding-top: 10px;
+	margin-top: 10px;
+}
+
+.control-btn{
+	height: 45px;
+	width: 85px;
+	background-color: rgb(13, 35, 181);
+	color: white;
+}
+
+.hide{
+	opacity: 0;
+}
+
+#start{
+	height: 200px;
+	line-height: 200px;
+	width: 100%;
+	position: absolute;
+	top: 35%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+#start-btn {
+	height: 100px;
+	width: 300px;
+	background-color: rgb(13, 35, 181);
+	color: white;
+	border-radius: 10px;
+	font-family: 'Sniglet', cursive;
+	font-size: 2em;
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+.explanation{
+	animation-name = fade-in;
+	animation-duration = 1s;
+	font-family: 'Sniglet', cursive;
+	text-align: center;
+	color: rgb(187, 255, 120);
+	font-size: 1.2em;
+	padding: 5px;
+	transition: ease-in 0.5s all;
+}
+
+#solution{
+	margin-top: 10px;
+	padding-top: 5px;
+}
+
+#header{
+	border: none;
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 2.2em;
+	margin: 0;
+	text-align: center;
+	color: rgb(187, 255, 120);
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+#show-name{
+	font-family: 'Permanent Marker', cursive;
+	border: none;
+	font-size: 2.2em;
+	text-align: center;
+	color: rgb(187, 255, 120);
+	animation-name: fade-in;
+	animation-duration: 1s;
+}
+
+@keyframes fade-in {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
