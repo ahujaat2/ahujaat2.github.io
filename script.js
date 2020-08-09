@@ -230,4 +230,5 @@ function finishQuiz(){
 	p.style.color = "rgb(187, 255, 120)";
 	p.style.animationName = "fade-in";
 	p.style.animationDuration = "1s";
+	p.style.fontSizeAdjust = "auto";
 }
