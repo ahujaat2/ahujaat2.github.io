@@ -153,7 +153,7 @@ function chooseAnswer(event) {
 	else{
 		correct_button = getCorrectAnswerButton();
 		correct_button.style.backgroundColor = "rgb(55, 179, 70)";
-		event.target.style.backgroundColor = "rgb(230, 41, 41)";
+		event.target.style.backgroundColor = "rgb(176, 42, 42)";
 		exp = "Oops!  " + exp;
 	};
 
@@ -224,10 +224,10 @@ function finishQuiz(){
 	p.appendChild(content);
 	parent.appendChild(p);
 	p.style.fontSize = "2em";
-	p.style.marginTop="210px";
+	p.style.marginTop="200px";
 	p.style.fontFamily = "'Sniglet', cursive";
 	p.style.textAlign = "center";
-	p.style.color = "rgb(187, 255, 120)";
+	p.style.color = "rgb(159, 217, 102)";
 	p.style.animationName = "fade-in";
 	p.style.animationDuration = "1s";
 	p.style.fontSizeAdjust = "auto";

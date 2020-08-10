@@ -1,5 +1,5 @@
 body{
-	background-color: rgb(204, 127, 235);
+	background-color: rgb(171, 103, 199);
 	position: relative;
 	margin: 0;
 	animation-name: fade-in;
@@ -35,18 +35,16 @@ body{
 .container{
 	height: 550px;
 	width: 700px;
-	background-color: rgb(184, 5, 255);
 	padding:20px;
 	margin: auto;
 	margin-top: 20px;
 	border-radius: 20px;
-	opacity: 0.9;
 	position: absolute;
 	top: 15%;
 }
 
 .question-container{
-	background-color: rgb(187, 255, 120);
+	background-color: rgb(159, 217, 102);
 	text-align: center;
 	margin: 20px;
 	padding: 20px;
@@ -72,7 +70,7 @@ body{
 	outline: none;
 	border: none;
 	border-radius: 15px;
-	background-color: rgb(255, 253, 209);
+	background-color: rgb(219, 219, 173);
 	font-family: 'Sniglet', cursive;
 	transition: 0.2s all;
 	font-size: 1.4em;
@@ -94,7 +92,7 @@ body{
 	height: 45px;
 	width: 85px;
 	background-color: rgb(13, 35, 181);
-	color: white;
+	color: rgb(195, 196, 128);
 }
 
 .hide{
@@ -120,7 +118,7 @@ body{
 	height: 100px;
 	width: 300px;
 	background-color: rgb(13, 35, 181);
-	color: white;
+	color: rgb(219, 219, 173);
 	border-radius: 10px;
 	font-family: 'Sniglet', cursive;
 	font-size: 2em;
@@ -134,8 +132,8 @@ body{
 	animation-duration = 1s;
 	font-family: 'Sniglet', cursive;
 	text-align: center;
-	color: rgb(187, 255, 120);
-	font-size: 1.2em;
+	color: rgb(159, 217, 102);
+	font-size: 1.3em;
 	padding: 5px;
 	transition: ease-in 0.5s all;
 	font-size-adjust: auto;
@@ -153,7 +151,7 @@ body{
 	font-size: 2.2em;
 	margin: auto;
 	text-align: center;
-	color: rgb(187, 255, 120);
+	color: rgb(159, 217, 102);
 	animation-name: fade-in;
 	animation-duration: 1s;
 	position: absolute;
@@ -166,7 +164,7 @@ body{
 	border: none;
 	font-size: 2.2em;
 	text-align: center;
-	color: rgb(187, 255, 120);
+	color: rgb(169, 232, 107);
 	animation-name: fade-in;
 	animation-duration: 1s;
 	font-size-adjust: auto;
