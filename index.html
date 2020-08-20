@@ -2,37 +2,28 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Quiz App</title>
-	<link rel="stylesheet" href="./style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Sniglet&display=swap" rel="stylesheet">
+	<title>GIF Generator</title>
+	<h1>Welcome to the Ultimate GIF Generator!</h1>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div class="base-container">
-		<img id="frame" src="./logo2.png">
-		<img id="coffee-cup" src="./logo3.png">
-		<p id="header">The <span id="show-name">F.R.I.E.N.D.S</span> Quiz</p>
-		<div class="container hide">
-			<div class="question-container">
-				<p>Question</p>
-			</div>
-			<div class="btn-grid">
-				<button class="answer-button btn">Answer 1</button>
-				<button class="answer-button btn">Answer 2</button>
-				<button class="answer-button btn">Answer 3</button>
-				<button class="answer-button btn">Answer 4</button>
-			</div>
-			<div id="solution">
-				<p class="explanation hide">Explanation</p>
-				<div class="controls">
-					<button class="control-btn btn hide next">Next</button>
-					<button class="control-btn btn hide finish">Finish</button>
-				</div>
-			</div>
+	<div id="super-container">
+		<div id="search-container">
+			<input id="search-input" type="text" placeholder="Search GIF" maxlength="40">
+			<input id="search-btn" type="button" class="btn" name="Search" value="Search">
+			<input id="clear-btn" type="button" class="btn" name="Clear" value="Clear">
 		</div>
-		<div id="start">	
-			<button id="start-btn" class="btn">Let's get started!</button>
+		<div id="more-search-container" class="container hide">
+			<button id="search-load" class="btn load hide">Load More...</button>
+			<button id="scroll-top-search" class="btn scroll">Up ↑</button>
+		</div>
+		<div id="trending-container">
+			<p class="headers">Trending GIFs</p>
+			<div id="more-trending-container" class="hide container">
+				<button id="trending-load" class="btn load">Load More...</button>
+				<button id="scroll-top-trending" class="btn scroll">Up ↑</button>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript" src="./script.js"></script>

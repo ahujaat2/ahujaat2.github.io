@@ -1,234 +1,186 @@
-questions = [
-	{
-		question: `What instrument does Mr Heckles claim he is playing when he complains about noise in "The One With the Flashback"?`,
-		answers : [
-			{ text: "Piano", correct: false },
-			{ text: "Oboe", correct: true },
-			{ text: "Flute", correct: false },
-			{ text: "Guitar", correct: false },
-		],
-		explanation: `Phoebe: "You don't play the oboe."
-					Mr. H: "I could play the oboe!"`
-	},
-	{
-		question: `What is Ross' first wife's name?`,
-		answers : [
-			{ text: "Charlie", correct: false },
-			{ text: "Emily", correct: false },
-			{ text: "Carol", correct: true },
-			{ text: "Rachel", correct: false },
-		],
-		explanation: `It's Carol. 
-					Joe: "You really didn't know she was a lesbian?"
-					Ross: "She didn't know, how should I know?!"`
-	},
-	{
-		question: `Can you name the character who was Rachel's boss and briefly dated Chandler?`,
-		answers : [
-			{ text: "Joanna", correct: true },
-			{ text: "Janine", correct: false },
-			{ text: "Julie", correct: false },
-			{ text: "Jasmine", correct: false },
-		],
-		explanation: `Joanna isn't just the boss in the office, if you know what I mean.. `
-	},
-		{
-		question: `Joey and Chandler's TV Guide is addressed to .. ?`,
-		answers : [
-			{ text: "Josephine Tribeca", correct: false },
-			{ text: "Joseph Tribbiani", correct: false },
-			{ text: "Chandler Bing", correct: false },
-			{ text: "Chanandler Bong", correct: true },
-		],
-		explanation: `Actually it's MISS Chanandler Bong!`
-	},
-		{
-		question: `In "The One Where Ross Dates a Student", what causes the fire in Phoebe's apartment?`,
-		answers : [
-			{ text: "Rachel's straightener", correct: true },
-			{ text: "Phoebe's incense stick", correct: false },
-			{ text: "Phoebe's candles", correct: false },
-			{ text: "Rachel's cigarette", correct: false },
-		],
-		explanation: `Earlier it's said that Phoebe's candles caused the fire, but later the firemen say it's the straightener.`
-	},
-		{
-		question: `What is the color of the couch in Central Perk that the Friends sit on?`,
-		answers : [
-			{ text: "Green", correct: false },
-			{ text: "Orange", correct: false },
-			{ text: "Red", correct: false },
-			{ text: "Brown", correct: true },
-		],
-		explanation: `You've gotta know this! It's Brown!`
-	},
-		{
-		question: `What is the name of Joey's imaginary friend?`,
-		answers : [
-			{ text: "Maurice", correct: true },
-			{ text: "Melvin", correct: false },
-			{ text: "Marcel", correct: false },
-			{ text: "Kip", correct: false },
-		],
-		explanation: `His name is Maurice. He's a space cowboy!`
-	},
-		{
-		question: `Which soap opera does Gunther tell Joey he used to act in before working at Central Perk?`,
-		answers : [
-			{ text: "Another World", correct: false },
-			{ text: "As the World Turns", correct: false },
-			{ text: "All my children", correct: true },
-			{ text: "Days of Our Lives", correct: false },
-		],
-		explanation: `Gunther: "I was Bryce on All My Children. They killed me in an avalanche!"`
-	},
-		{
-		question: `Which cast member almost didn't return for the final season?`,
-		answers : [
-			{ text: "Phoebe", correct: false },
-			{ text: "Monica", correct: false },
-			{ text: "Chandler", correct: false },
-			{ text: "Rachel", correct: true },
-		],
-		explanation: `It’s Rach! Jennifer Aniston admitted that she almost canceled on the final season. Imagine!`
-	}
+const searchButton = document.getElementById("search-btn"); // Search Button
+const searchInput = document.getElementById("search-input"); // Search Input box
+const superContainer = document.getElementById("super-container"); // Master container
+const clearButton = document.getElementById("clear-btn"); // Clear Button
+const upButtonTrending = document.getElementById("scroll-top-trending"); // Up button on Trending section
+const upButtonSearch = document.getElementById("scroll-top-search"); // Up button on Search GIFs section
+const trendingLoadButton = document.getElementById("trending-load"); // Load More button on Trending section
+const searchLoadButton = document.getElementById("search-load"); // Load More button on Search GIFs section
+let input = ""; // Value of search input
+let searchGifs = null; //
+let trendingGifs = null;
+let tdata = 0; //Counter for Trending GIFs
+let sdata = 0; //Counter for Search GIFs
 
-];
+window.addEventListener("scroll", onScroll); //Up button shows up when screen is scrolled
 
-const ques_cont = document.getElementsByClassName("question-container")[0];
-const answer_elements = document.getElementsByClassName("answer-button");
-const start = document.getElementById("start-btn");
-const next = document.getElementsByClassName("control-btn")[0];
-const finish = document.getElementsByClassName("control-btn")[1];
-const p = document.getElementsByClassName("explanation")[0];
-let current_ques = -1;
-const qlist_count = questions.length;
-let qCount = 0;
-let correct_count = 0;
-let i;
-let explanation_value = true;
-
-start.addEventListener("click", startQuiz);
-
-function startQuiz(){
-	start.parentNode.parentNode.removeChild(start.parentNode)
-	quiz_cont = document.getElementsByClassName("container hide")[0];
-	quiz_cont.classList.remove("hide");
-	quiz_cont.style.animationName = "fade-in";
-	quiz_cont.style.animationDuration = "1s";
-	updateQuestion();
-}
-
-function updateQuestion(){
-	if (i == undefined) {
-		i = -1;
-	}
-	if (questions.length === 1) {
-		i = 0;
-	}
-	while (i === current_ques && questions.length !== 1){
-		i = Math.floor((Math.random() * questions.length));
-	}
-	ques_cont.textContent = questions[i].question;
-	current_ques = i;
-	for (let j=0; j < answer_elements.length; j++) {
-		answer_elements[j].textContent = questions[i].answers[j].text;
-	}
-	qCount++;
-}
-
-for (element of answer_elements) {
-	element.addEventListener("click", chooseAnswer);
-};
-
-function chooseAnswer(event) {
-	ans_val = event.target.textContent;
-	correct_ans = questions[current_ques].answers.find(ans => ans.correct == true);
-	let exp = questions[current_ques].explanation;
-	if (ans_val == correct_ans.text) {
-		event.target.style.backgroundColor = "rgb(55, 179, 70)";
-		correct_count++;
-		exp = "Yayy! You got it right!  " + exp;
+// Gets triggered when window is scrolled
+function onScroll(){
+	if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+		upButtonTrending.style.display = "block";
+		upButtonSearch.style.display = "block";
 	}
 	else{
-		correct_button = getCorrectAnswerButton();
-		correct_button.style.backgroundColor = "rgb(55, 179, 70)";
-		event.target.style.backgroundColor = "rgb(176, 42, 42)";
-		exp = "Oops!  " + exp;
-	};
-
-	if(explanation_value) {
-		p.textContent = exp;
-		p.style.animationName = "fade-in";
-		p.style.animationDuration = "1s";
-		p.classList.remove("hide");
-	};
-
-	for (element of answer_elements) {
-			element.style.pointerEvents = "none";
-	};
-
-	if(qCount < qlist_count) {
-		next.classList.remove("hide");
-	};
-	if(qCount == qlist_count) {
-		finish.classList.remove("hide");
-		finish.style.pointerEvents = "auto";
+		upButtonTrending.style.display = "none";
+		upButtonSearch.style.display = "none";
 	}
-	questions = questions.filter(question => question !== questions[current_ques]);
-	next.style.pointerEvents = "auto";
-};
-
-function getCorrectAnswerButton(){
-	correct_ans = questions[current_ques].answers.find(ans => ans.correct == true).text;
-	correct_button = Array.from(answer_elements).find(element => element.textContent == correct_ans);
-	return correct_button;
-}
-next.addEventListener("click", nextQuestion);
-
-function nextQuestion(){
-	if (qCount == qlist_count-1) {
-		next.classList.add("hide");
-	}
-	p.classList.add("hide");
-	updateQuestion();
-	for (element of answer_elements) {
-		element.style.backgroundColor = "rgb(255, 253, 209)";
-		element.style.pointerEvents = "auto";
-	};
-	next.style.pointerEvents = "none";
 }
 
-finish.addEventListener("click", finishQuiz);
+upButtonTrending.addEventListener("click", scrollUp); // Scrolls up to top; Exists on Trending section
+upButtonSearch.addEventListener("click", scrollUp); // Scrolls up to top; Exists on Search section
 
-function finishQuiz(){
-	let value = "";
-	const correct_pct = (correct_count/qlist_count*100).toFixed(); 
-	if (correct_pct >= 85){
-		value = `You've answered ${correct_pct}% questions correctly. You're a true F.R.I.E.N.D.S fan!`
+// Gets triggered when the Up button is clicked
+function scrollUp(){
+	document.documentElement.scrollTop = 0;
+}
+
+searchInput.addEventListener("input", getInputValue); //Records the search input
+
+//Gets triggered when something is inputed on the Search GIFs box
+function getInputValue(event){
+	input = event.target.value;
+	let parent = document.getElementById("result-container");
+	if (parent !== null){
+		parent.parentNode.removeChild(parent);
 	}
-	else if (correct_pct >= 50 && correct_pct <85){
-		value = `You've answered ${correct_pct}% questions correctly. It's time for a rerun!`
+}
+
+searchButton.addEventListener("click", getGifs); // Loads Search GIFs
+
+//Gets triggered when Search Button is clicked
+async function getGifs() {
+	sdata = 0;
+	// searchGifs = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=sLlIJ9VqlikS8ci0z7RpYKHzKFXuDCc2&q=${input}&limit=100`)
+	// .then(res => res.json())
+	// .then(res => res.data)
+	// .then(res => loadSearchGifs(res));
+	fetch(`https://api.giphy.com/v1/gifs/search?api_key=sLlIJ9VqlikS8ci0z7RpYKHzKFXuDCc2&q=${input}&limit=100`)
+	.then(res => res.json())
+	.then(res => searchGifs = res.data)
+	.then(searchGifs => loadSearchGifs(searchGifs));
+}
+
+//Loads first 10 gifs that match the search criteria
+function loadSearchGifs(res) {
+	let data = res.slice(sdata ,sdata+10);
+	sdata += 10;
+	let childContainer = document.getElementById("trending-container");
+	let existingParent = document.getElementById("result-container");
+	let loadMoreContainer = document.getElementById("more-search-container");
+	if (existingParent !== null){
+		superContainer.appendChild(loadMoreContainer);
+		existingParent.parentNode.removeChild(existingParent);
 	}
-	else if(correct_pct < 50){
-		value = `Uh-oh! You've answered ${correct_pct}% questions correctly. Could you BE more wrong?!`
+	let value;
+	if (data.length === 0) {
+		value = "Oops! No matching GIFs found!"
+		return;
 	}
-	parent = ques_cont.parentNode;
-	solution_parent = next.parentNode.parentNode;
-	solution_parent.removeChild(document.getElementsByClassName("explanation")[0]);
-	parent.removeChild(ques_cont);
-	parent.removeChild(document.getElementsByClassName("btn-grid")[0]);
-	solution_parent.removeChild(document.getElementsByClassName("controls")[0]);
+	else{
+		value = `Found these GIFs matching your search!`;
+		childContainer.style.position = "relative";
+	}
+	let parent = document.createElement("div");
+	parent.setAttribute("id", "result-container");
+	superContainer.insertBefore(parent, childContainer);
 	let p = document.createElement("p");
-	let content = document.createTextNode(value);
-	p.appendChild(content);
+	let text = document.createTextNode(value);
+	p.appendChild(text);
+	p.classList.add("headers");
 	parent.appendChild(p);
-	p.style.fontSize = "2em";
-	p.style.marginTop="200px";
-	p.style.fontFamily = "'Sniglet', cursive";
-	p.style.textAlign = "center";
-	p.style.color = "rgb(159, 217, 102)";
-	p.style.animationName = "fade-in";
-	p.style.animationDuration = "1s";
-	p.style.fontSizeAdjust = "auto";
+	loadMoreContainer.classList.remove("hide");
+	searchLoadButton.classList.remove("hide");
+	parent.appendChild(loadMoreContainer);
+	data.forEach( field => {
+		let image = document.createElement("img");
+		image.src = field.images.original.url;
+		parent.insertBefore(image, loadMoreContainer);
+		}
+	);
 }
+
+document.addEventListener("load", getTrendingGifs()); //Display Trending GIFs when page loads
+
+//Gets called when page loads
+function getTrendingGifs() {
+	fetch(`https://api.giphy.com/v1/gifs/trending?api_key=sLlIJ9VqlikS8ci0z7RpYKHzKFXuDCc2&limit=200`)
+	.then(res => res.json())
+	.then(res => trendingGifs = res.data)
+	.then(() => loadTrendingGifs());
+}
+
+//Loads first 20 trending GIFs
+function loadTrendingGifs(){
+	let data;
+	if (tdata+20 > trendingGifs.length){
+		data = trendingGifs.slice(tdata,trendingGifs.length);
+	}
+	else {
+		data = trendingGifs.slice(tdata,tdata + 20);
+	}
+	tdata += 20;
+	let parent = document.getElementById("trending-container");
+	const trendingLoad = document.getElementById("more-trending-container");
+	trendingLoad.classList.remove("hide");
+	data.forEach( field => {
+		let image = document.createElement("img");
+		image.src = field.images.original.url;
+		parent.insertBefore(image, trendingLoad);
+		}
+	);
+	if (tdata >= res.length) {
+		trendingLoadButton.classList.add("hide");
+	}
+}
+
+trendingLoadButton.addEventListener("click", loadTrendingGifs); //Load More Trending GIFs
+searchLoadButton.addEventListener("click", loadMoreSearchGifs); //Load More Search GIFs
+
+//Gets called on clicking Load More button in the Search section
+// async function getMoreSearchGifs(){
+// 	// searchGifs = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=sLlIJ9VqlikS8ci0z7RpYKHzKFXuDCc2&q=${input}&limit=100`)
+// 	// .then(res => res.json())
+// 	// .then(res => res.data)
+// 	// .then(res => 
+// 	loadMoreSearchGifs();
+// }
+
+////Gets called on clicking Load More button in the Search section and loads next 20 results from Search GIFs
+function loadMoreSearchGifs() {
+	let data;
+	if (sdata+10 > searchGifs.length){
+		data = searchGifs.slice(sdata, searchGifs.length);
+	}
+	else{
+		data = searchGifs.slice(sdata ,sdata+10);
+	}
+	
+	sdata += 10;
+	let parent = document.getElementById("result-container");
+	let loadMoreContainer = document.getElementById("more-search-container");
+	loadMoreContainer.classList.remove("hide");
+	data.forEach( field => {
+		let image = document.createElement("img");
+		image.src = field.images.original.url;
+		parent.insertBefore(image, loadMoreContainer);
+		}
+	);
+	if (sdata >= res.length) {
+		searchLoadButton.classList.add("hide");
+	}
+}
+
+clearButton.addEventListener("click", clearGifs); //Clears Searched GIFs and Input text
+
+//Gets called on clicking the Clear button
+function clearGifs(){
+	let existingParent = document.getElementById("result-container");
+	let loadMoreContainer = document.getElementById("more-search-container");
+	searchInput.value = "";
+	if (existingParent !== null){
+		superContainer.appendChild(loadMoreContainer);
+		loadMoreContainer.classList.add("hide");
+		existingParent.parentNode.removeChild(existingParent);
+	}
+}
+
